@@ -2166,4 +2166,9 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 
 		activate: "  [POKEMON] extends [MOVE] by 2 turns!",
 	},
+	//	CUSTOM
+	timeless: {
+		name: "Timeless",
+		shortDesc: "This Pokemon always goes first.",
+	},
 };

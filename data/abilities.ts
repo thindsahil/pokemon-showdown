@@ -5212,4 +5212,13 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 3,
 		num: -4,
 	},
+	//	CUSTOM
+	timeless: {
+		onModifyMove(move) {
+			move.priority = 10;
+		},
+		name: "Timeless",
+		rating: 5,
+		num: 999,
+	}
 };
