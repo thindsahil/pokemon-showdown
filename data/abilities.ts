@@ -5214,8 +5214,8 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	},
 	//	CUSTOM
 	timeless: {
-		onModifyMove(move) {
-			move.priority = 10;
+		onModifyPriority(priority, pokemon, target, move) {
+			return priority + 6;
 		},
 		name: "Timeless",
 		rating: 5,
