@@ -5214,7 +5214,11 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	},
 	//	CUSTOM
 	timeless: {
+		onBeforeMove(pokemon) {
+			this.add('-activate', pokemon, 'ability: Timeless');
+		},
 		onModifyPriority(priority, pokemon, target, move) {
+			// this.add('-activate', pokemon, 'ability: Timeless');
 			return priority + 6;
 		},
 		name: "Timeless",
