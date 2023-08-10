@@ -5225,7 +5225,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 5,
 		num: 999,
 	}, 
-	Endless : {
+	endless : {
 		onAnyAccuracy(accuracy, target, source, move) {
 			if (move && (source === this.effectState.target || target === this.effectState.target)) {
 				return true;
