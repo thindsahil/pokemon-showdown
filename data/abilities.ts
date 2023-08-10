@@ -5226,6 +5226,11 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 999,
 	}, 
 	endless : {
+		onTryHit(target, source, move) {
+			if (!this.dex.getImmunity(move.type, target)) {
+				this.add('-activate', source, 'ability: Endless');
+			}
+		},
 		onAnyAccuracy(accuracy, target, source, move) {
 			if (move && (source === this.effectState.target || target === this.effectState.target)) {
 				return true;
@@ -5236,8 +5241,9 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onModifyMove(move) {
 			move.ignoreAbility = true;
 			move.infiltrates = true;
-			if (!move.ignoreImmunity) move.ignoreImmunity = {};
+			// if (!move.ignoreImmunity) move.ignoreImmunity = {};
 			move.ignoreImmunity = true;
+			delete move.flags['protect'];
 			// if (move.ignoreImmunity !== true) {
 			// 	move.ignoreImmunity['Normal'] = true;
 			// 	move.ignoreImmunity['Fire'] = true;
@@ -5258,7 +5264,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			// 	move.ignoreImmunity['Steel'] = true;
 			// 	move.ignoreImmunity['Fairy'] = true;
 			// }
-		},
+		}, 
 		name: "Endless",
 		rating: 5,
 		num: 998,
