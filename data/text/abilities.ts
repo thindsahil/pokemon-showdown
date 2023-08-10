@@ -2169,6 +2169,10 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	//	CUSTOM
 	timeless: {
 		name: "Timeless",
-		shortDesc: "This Pokemon always goes first.",
+		shortDesc: "This Pokemon always* goes first.",
+	},
+	endless: {
+		name: "Endless",
+		shortDesc: "This Pokemon's moves always hit.",
 	},
 };

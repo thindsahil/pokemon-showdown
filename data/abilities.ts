@@ -5224,5 +5224,43 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		name: "Timeless",
 		rating: 5,
 		num: 999,
-	}
+	}, 
+	Endless : {
+		onAnyAccuracy(accuracy, target, source, move) {
+			if (move && (source === this.effectState.target || target === this.effectState.target)) {
+				return true;
+			}
+			return accuracy;
+		},
+		onModifyMovePriority: -5,
+		onModifyMove(move) {
+			move.ignoreAbility = true;
+			move.infiltrates = true;
+			if (!move.ignoreImmunity) move.ignoreImmunity = {};
+			move.ignoreImmunity = true;
+			// if (move.ignoreImmunity !== true) {
+			// 	move.ignoreImmunity['Normal'] = true;
+			// 	move.ignoreImmunity['Fire'] = true;
+			// 	move.ignoreImmunity['Water'] = true;
+			// 	move.ignoreImmunity['Grass'] = true;
+			// 	move.ignoreImmunity['Electric'] = true;
+			// 	move.ignoreImmunity['Ice'] = true;
+			// 	move.ignoreImmunity['Fighting'] = true;
+			// 	move.ignoreImmunity['Poison'] = true;
+			// 	move.ignoreImmunity['Ground'] = true;
+			// 	move.ignoreImmunity['Flying'] = true;
+			// 	move.ignoreImmunity['Psychic'] = true;
+			// 	move.ignoreImmunity['Bug'] = true;
+			// 	move.ignoreImmunity['Rock'] = true;
+			// 	move.ignoreImmunity['Ghost'] = true;
+			// 	move.ignoreImmunity['Dragon'] = true;
+			// 	move.ignoreImmunity['Dark'] = true;
+			// 	move.ignoreImmunity['Steel'] = true;
+			// 	move.ignoreImmunity['Fairy'] = true;
+			// }
+		},
+		name: "Endless",
+		rating: 5,
+		num: 998,
+	},
 };
