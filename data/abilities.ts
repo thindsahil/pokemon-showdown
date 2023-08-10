@@ -5226,7 +5226,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 999,
 	}, 
 	endless : {
-		onTryHit(target, source, move) {
+		onBeforeMove(target, source, move) {
 			if (!this.dex.getImmunity(move.type, target)) {
 				this.add('-activate', source, 'ability: Endless');
 			}
