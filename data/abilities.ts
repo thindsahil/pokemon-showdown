@@ -5227,12 +5227,13 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	}, 
 	endless : {
 		//	diplay message when ability activated not working properly
-		onTryHitPriority: -6,
-		onTryHit(target, source, move) {
-			if (this.dex.getImmunity(move.type, target)) {
-				this.add('-activate', target, 'ability: Endless');
+		onTryHitPriority: -4,
+		onBeforeMove(source, target, move) {
+			if (!this.dex.getImmunity(move.type, target)) {
+				this.add('-activate', source, 'ability: Endless');
 			}
 		},
+		
 		onAnyAccuracy(accuracy, target, source, move) {
 			if (move && (source === this.effectState.target || target === this.effectState.target)) {
 				return true;
@@ -5246,26 +5247,6 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			// if (!move.ignoreImmunity) move.ignoreImmunity = {};
 			move.ignoreImmunity = true;
 			delete move.flags['protect'];
-			// if (move.ignoreImmunity !== true) {
-			// 	move.ignoreImmunity['Normal'] = true;
-			// 	move.ignoreImmunity['Fire'] = true;
-			// 	move.ignoreImmunity['Water'] = true;
-			// 	move.ignoreImmunity['Grass'] = true;
-			// 	move.ignoreImmunity['Electric'] = true;
-			// 	move.ignoreImmunity['Ice'] = true;
-			// 	move.ignoreImmunity['Fighting'] = true;
-			// 	move.ignoreImmunity['Poison'] = true;
-			// 	move.ignoreImmunity['Ground'] = true;
-			// 	move.ignoreImmunity['Flying'] = true;
-			// 	move.ignoreImmunity['Psychic'] = true;
-			// 	move.ignoreImmunity['Bug'] = true;
-			// 	move.ignoreImmunity['Rock'] = true;
-			// 	move.ignoreImmunity['Ghost'] = true;
-			// 	move.ignoreImmunity['Dragon'] = true;
-			// 	move.ignoreImmunity['Dark'] = true;
-			// 	move.ignoreImmunity['Steel'] = true;
-			// 	move.ignoreImmunity['Fairy'] = true;
-			// }
 		}, 
 		name: "Endless",
 		rating: 5,
