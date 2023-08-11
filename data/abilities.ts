@@ -5226,9 +5226,11 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 999,
 	}, 
 	endless : {
-		onBeforeMove(target, source, move) {
-			if (!this.dex.getImmunity(move.type, target)) {
-				this.add('-activate', source, 'ability: Endless');
+		//	diplay message when ability activated not working properly
+		onTryHitPriority: -6,
+		onTryHit(target, source, move) {
+			if (this.dex.getImmunity(move.type, target)) {
+				this.add('-activate', target, 'ability: Endless');
 			}
 		},
 		onAnyAccuracy(accuracy, target, source, move) {
