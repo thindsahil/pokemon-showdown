@@ -2173,6 +2173,6 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	endless: {
 		name: "Endless",
-		shortDesc: "This Pokemon's moves always hit.",
+		shortDesc: "This Pokemon's moves always* hit.",
 	},
 };
